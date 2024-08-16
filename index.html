@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Lotus</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+            color: #333;
+            transition: background-color 0.3s, color 0.3s; /* Transição suave para mudança de tema */
+        }
+        .dark-mode body {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        .dark-mode header {
+            background-color: rgba(50, 50, 50, 0.8);
+        }
+        .dark-mode .container {
+            background-color: rgba(50, 50, 50, 0.8);
+        }
+        .dark-mode .category-item {
+            background-color: #444;
+            color: #f0f0f0;
+        }
+        .dark-mode footer {
+            background-color: rgb(60, 30, 60);
+        }
+        header {
+            background-color: rgba(110, 0, 114, 0.8); /* Cor de fundo semi-transparente */
+            color: white;
+            padding: 20px; /* Tamanho padrão */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1; /* Garante que o header fique acima do fundo */
+        }
+        .logo img {
+            height: 100px; /* Tamanho padrão da logo */
+        }
+        .header-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .header-title h1 {
+            margin: 0; /* Remove a margem padrão */
+            font-size: 32px; /* Tamanho padrão da fonte */
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, color 0.2s; /* Adiciona uma transição suave */
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a:active {
+            transform: scale(0.95); /* Reduz o tamanho do link quando clicado */
+            color: #f0f0f0; /* Muda a cor ao clicar */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s; /* Transição suave para mudança de tema */
+        }
+        .category {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .category-item {
+            background-color: white;
+            width: 100%;
+            max-width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(100, 2, 146);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: #333;
+        }
+        .category-item:hover {
+            transform: scale(1.05);
+        }
+        .category-item img {
+            width: 100%;
+            height: auto;
+        }
+        .category-item h3 {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: rgb(100, 2, 146);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1; /* Garante que o footer fique acima do fundo */
+        }
+        .theme-toggle {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2; /* Garante que o botão fique acima do conteúdo */
+        }
+        .dark-mode .theme-toggle {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #f0f0f0;
+        }
+        @media (max-width: 768px) {
+            .category-item {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo do Site">
+    </div>
+    <div class="header-title">
+        <h1>Loja Lotus</h1>
+    </div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="https://discord.gg/4a8WtKMWKv" target="_blank">Discord</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="category">
+        <a href="vips.html" class="category-item">
+            <img src="logo.png" alt="VIP">
+            <h3>Vips</h3>
+        </a>
+        <a href="veiculos.html" class="category-item">
+            <img src="logo.png" alt="Produto 2">
+            <h3>Veiculos</h3>
+        </a>
+        <a href="categoria3.html" class="category-item">
+            <img src="logo.png" alt="Produto 3">
+            <h3>Objeto 3</h3>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Lotus RJ. Todos os direitos reservados.</p>
+    <button class="theme-toggle" onclick="toggleTheme()">Modo Escuro</button>
+</footer>
+
+<script>
+    function toggleTheme() {
+        const currentTheme = document.body.classList.contains('dark-mode');
+        if (currentTheme) {
+            document.body.classList.remove('dark-mode');
+            document.querySelectorAll('.theme-toggle').forEach(button => button.textContent = 'Modo Escuro');
+        } else {
+            document.body.classList.add('dark-mode');
+            document.querySelectorAll('.theme-toggle').forEach(button => button.textContent = 'Modo Claro');
+        }
+        // Salvar a preferência do tema no localStorage
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+
+    // Aplicar a preferência do tema armazenada ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelectorAll('.theme-toggle').forEach(button => button.textContent = 'Modo Claro');
+        }
+    });
+</script>
+
+</body>
+</html>

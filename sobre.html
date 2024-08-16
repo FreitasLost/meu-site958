@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Loja Lotus</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #f0f0f0;
+            overflow: hidden; /* Impede a rolagem para que o vídeo cubra toda a tela */
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Garante que o vídeo fique atrás do conteúdo */
+        }
+        .content {
+            position: relative;
+            padding: 20px;
+            z-index: 1; /* Garante que o conteúdo fique acima do vídeo */
+            text-align: center;
+        }
+        header, footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            color: white;
+        }
+        footer {
+            margin-top: 20px;
+        }
+        .back-button {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #f0f0f0;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="video.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <header>
+        <a href="index.html" class="back-button">Voltar</a>
+    </header>
+
+    <div class="content">
+    </div>
+</body>
+</html>
