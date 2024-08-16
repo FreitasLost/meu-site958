@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPS - Loja Lotus</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+            color: #333;
+            transition: background-color 0.3s, color 0.3s; /* Transição suave para mudança de tema */
+        }
+        .dark-mode body {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        .dark-mode header {
+            background-color: rgba(50, 50, 50, 0.8);
+        }
+        .dark-mode .container {
+            background-color: rgba(50, 50, 50, 0.8);
+        }
+        .dark-mode .product-item {
+            background-color: #444;
+            color: #f0f0f0;
+        }
+        .dark-mode footer {
+            background-color: rgb(60, 30, 60);
+        }
+        header {
+            background-color: rgba(110, 0, 114, 0.8); /* Cor de fundo semi-transparente */
+            color: white;
+            padding: 20px; /* Tamanho padrão */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1; /* Garante que o header fique acima do fundo */
+        }
+        .logo img {
+            height: 100px; /* Tamanho padrão da logo */
+        }
+        .header-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .header-title h1 {
+            margin: 0; /* Remove a margem padrão */
+            font-size: 32px; /* Tamanho padrão da fonte */
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s; /* Transição suave para mudança de tema */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .breadcrumb span {
+            margin-right: 5px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product-item {
+            background-color: white;
+            width: 100%;
+            max-width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(100, 2, 146);
+            transition: transform 0.2s;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            color: #333;
+            text-decoration: none;
+        }
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+        .product-item h3 {
+            margin: 10px 0;
+        }
+        .product-item p {
+            color: #555;
+        }
+        .product-item .price {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #e67e22;
+        }
+        .product-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .product-item ul li {
+            margin-bottom: 5px;
+        }
+        .product-item .whatsapp-button {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #25D366;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-item .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+            color: white;
+            background-color: rgba(110, 0, 114, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background-color: rgba(110, 0, 114, 0.6);
+        }
+        .theme-toggle {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2; /* Garante que o botão fique acima do conteúdo */
+        }
+        .dark-mode .theme-toggle {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #f0f0f0;
+        }
+        footer {
+            background-color: rgb(100, 2, 146);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1; /* Garante que o footer fique acima do fundo */
+        }
+        @media (max-width: 768px) {
+            .product-item {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo do Site">
+    </div>
+    <div class="header-title">
+        <h1>Loja Lotus</h1>
+    </div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="https://discord.gg/4a8WtKMWKv" target="_blank">Discord</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="breadcrumb">
+        <a href="index.html">Início</a> &gt; <span>Dinheiro</span>
+    </div>
+
+    <h2>Valores Disponiveis</h2>
+
+    <div class="products">
+        <!-- Produto 1 -->
+        <div class="product-item">
+            <img src="DINHEIRO1M.png" alt="Produto 1A">
+            <h3>100 Mil</h3>
+            <p>Bonus 20 Mil+.</p>
+            <div class="price">R$ 25,90</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%201A." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+        <!-- Produto 2 -->
+        <div class="product-item">
+            <img src="DINHEIRO1M.png" alt="Produto 1B">
+            <h3>500 Mil</h3>
+            <p>Bonus 30 Mil.</p>
+            <div class="price">R$ 54,90</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%201B." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+        <!-- Produto 3 -->
+        <div class="product-item">
+            <img src="DINHEIRO1M.png" alt="Produto 1C">
+            <h3>1 Milhão</h3>
+            <p>Bonus de 100 Mil</p>
+            <div class="price">R$ 84,90</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%201C." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+        <!-- Produto 4 -->
+        <div class="product-item">
+            <img src="MONEY-1.png" alt="Produto 2A">
+            <h3>10 Moedas</h3>
+            <p>Gaste a Vontade</p>
+            <div class="price">R$ 9,99</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%202A." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+        <!-- Produto 5 -->
+        <div class="product-item">
+            <img src="MONEY-1.png" alt="Produto 2B">
+            <h3>15 Moedas</h3>
+            <p>Gaste a Vontade</p>
+            <div class="price">R$ 13,99</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%202B." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+        <!-- Produto 6 -->
+        <div class="product-item">
+            <img src="MONEY-1.png" alt="Produto 2C">
+            <h3>20 Moedas</h3>
+            <p>Gaste a Vontade</p>
+            <div class="price">R$ 17,99</div>
+            <a href="https://wa.me/5517992095122?text=Olá%2C%20estou%20interessado%20no%20Produto%202C." class="whatsapp-button" target="_blank">Comprar no WhatsApp</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Voltar</a>
+</div>
+
+<footer>
+    <p>© 2024 Loja Lotus. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

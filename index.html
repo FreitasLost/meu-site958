@@ -33,20 +33,22 @@
         header {
             background-color: rgba(110, 0, 114, 0.8); /* Cor de fundo semi-transparente */
             color: white;
-            padding: 20px; /* Tamanho padrão */
+            padding: 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between; /* Espaça a logo, título e menu */
             flex-wrap: wrap;
             position: relative;
             z-index: 1; /* Garante que o header fique acima do fundo */
         }
         .logo img {
             height: 100px; /* Tamanho padrão da logo */
+            margin-right: 20px; /* Espaçamento à direita da logo */
         }
         .header-title {
-            text-align: center;
-            flex-grow: 1;
+            flex: 1;
+            text-align: center; /* Centraliza o título horizontalmente */
+            margin: 0 auto; /* Garante que a centralização funcione corretamente */
         }
         .header-title h1 {
             margin: 0; /* Remove a margem padrão */
@@ -55,6 +57,8 @@
         nav {
             display: flex;
             gap: 15px;
+            justify-content: center; /* Centraliza os links do menu */
+            margin-top: 10px; /* Espaçamento acima do menu */
         }
         nav a {
             color: white;
@@ -77,6 +81,44 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s; /* Transição suave para mudança de tema */
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 300px; /* Altura do carrossel ajustada */
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta as imagens para cobrir o contêiner sem distorção */
+            flex: 0 0 100%; /* Faz com que cada imagem ocupe 100% da largura do carrossel */
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .carousel-buttons button:hover {
+            background-color: rgba(255, 255, 255, 1);
         }
         .category {
             display: flex;
@@ -148,25 +190,38 @@
         <h1>Loja Lotus</h1>
     </div>
     <nav>
-        <a href="index.html">Início</a>
         <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
         <a href="https://discord.gg/4a8WtKMWKv" target="_blank">Discord</a>
     </nav>
 </header>
 
 <div class="container">
+    <!-- Carrossel de Promoções -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="slides/promo1.png" alt="Promoção 1">
+            <img src="slides/promo2.png" alt="Promoção 2">
+            <img src="slides/promo3.png" alt="Promoção 3">
+        </div>
+        <div class="carousel-buttons">
+            <button onclick="prevSlide()">&#10094;</button>
+            <button onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
     <div class="category">
         <a href="vips.html" class="category-item">
             <img src="logo.png" alt="VIP">
             <h3>Vips</h3>
         </a>
         <a href="veiculos.html" class="category-item">
-            <img src="logo.png" alt="Produto 2">
-            <h3>Veiculos</h3>
+            <img src="logo.png" alt="Veiculos">
+            <h3>Veículos</h3>
         </a>
-        <a href="categoria3.html" class="category-item">
-            <img src="logo.png" alt="Produto 3">
-            <h3>Objeto 3</h3>
+        <a href="dinheiro.html" class="category-item">
+            <img src="logo.png" alt="Dinheiro">
+            <h3>Dinheiro/Moedas</h3>
         </a>
     </div>
 </div>
@@ -177,6 +232,28 @@
 </footer>
 
 <script>
+    let currentSlide = 0;
+    const slideInterval = 3000; // Intervalo de 3 segundos para troca de slides
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+        });
+    }
+
+    function nextSlide() {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+
     function toggleTheme() {
         const currentTheme = document.body.classList.contains('dark-mode');
         if (currentTheme) {
@@ -197,6 +274,12 @@
             document.body.classList.add('dark-mode');
             document.querySelectorAll('.theme-toggle').forEach(button => button.textContent = 'Modo Claro');
         }
+
+        // Inicializa o carrossel
+        showSlide(currentSlide);
+
+        // Inicia o slideshow automático
+        setInterval(nextSlide, slideInterval);
     });
 </script>
 

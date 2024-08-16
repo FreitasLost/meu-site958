@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Loja Lotus</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        header, footer {
+            background-color: rgba(110, 0, 114, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px; /* Aumenta a largura do contêiner */
+            margin: 50px auto;
+            padding: 40px; /* Aumenta o padding interno do contêiner */
+            background-color: rgba(255, 255, 255, 0.9); /* Ajusta a opacidade para um contraste maior */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta o tamanho da sombra */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .buttons a, .buttons button {
+            display: inline-block;
+            background-color: rgba(110, 0, 114, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            flex-grow: 1;
+            cursor: pointer;
+            border: none;
+        }
+        .buttons a:hover, .buttons button:hover {
+            background-color: rgba(100, 0, 100, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Contato - Loja Lotus</h1>
+</header>
+
+<div class="container">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <div class="buttons">
+        <a href="https://api.whatsapp.com/send?phone=5517992095122&text=Olá,%20Me%20Chamo%20" target="_blank">Enviar via WhatsApp</a>
+        <a href="https://discord.gg/4a8WtKMWKv" target="_blank">Enviar via Discord</a>
+    </div>
+    
+    <div class="buttons" style="margin-top: 20px;">
+        <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Lotus RJ. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
